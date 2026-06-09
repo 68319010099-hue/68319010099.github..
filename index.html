@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Portal - วิทยาลัยเทคนิคสว่างแดนดิน</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="card" id="login-portal-card">
+        <div class="portal-header">
+            <img src="https://picsum.photos/100?grayscale" alt="Corporate Logo" class="portal-logo">
+            <h1>สถาบันเทคโนโลยีและสารสนเทศ</h1>
+            <p class="subtitle">วิทยาลัยเทคนิคสว่างแดนดิน | ระบบลงทะเบียนบุคลากรภายใน</p>
+        </div>
+
+        <hr class="portal-divider">
+
+        <form id="corporateForm" onsubmit="return validateCorporateForm(event)">
+            
+            <h3 class="section-title">01. ข้อมูลการเข้าสู่ระบบ (Account Information)</h3>
+            
+            <div class="form-group">
+                <label for="fullName">ชื่อ - นามสกุล (ภาษาไทย) <span class="required">*</span></label>
+                <input type="text" id="fullName" class="form-input" placeholder="ระบุชื่อและนามสกุลจริง">
+                <span class="error-msg" id="nameError">กรุณาระบุชื่อ-นามสกุลเพื่อดำเนินการต่อ</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">อีเมลสถาบัน / องค์กร (Corporate Email) <span class="required">*</span></label>
+                <input type="email" id="email" class="form-input" placeholder="username@it-sawan.ac.th">
+                <span class="error-msg" id="emailError">ระบบอีเมลไม่ถูกต้องตามรูปแบบขององค์กร</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">รหัสผ่านความปลอดภัย (Password) <span class="required">*</span></label>
+                <input type="password" id="password" class="form-input" placeholder="กำหนดรหัสผ่านความปลอดภัย">
+                <span class="error-msg" id="passwordError">รหัสผ่านต้องมีความยาวไม่น้อยกว่า 6 ตัวอักษร</span>
+            </div>
+
+            <h3 class="section-title">02. ข้อมูลคุณวุฒิและสายงาน (Professional Profile)</h3>
+
+            <div class="form-group">
+                <label for="education">ระดับการศึกษาสูงสุด (Highest Education)</label>
+                <select id="education" class="form-select">
+                    <option value="">-- เลือกคุณวุฒิการศึกษา --</option>
+                    <option value="ปวช">ประกาศนียบัตรวิชาชีพ (ปวช.)</option>
+                    <option value="ปวส">ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</option>
+                    <option value="Bachelor">ปริญญาตรีเทคโนโลยีสายปฏิบัติการ (💡 แนะนำสำหรับสายงานวิศวกรรม)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="career">สายงาน/ตำแหน่งที่ต้องการบรรจุ (Target Career)</label>
+                <select id="career" class="form-select career-select">
+                    <option value="corporate-dev">🏢 Enterprise Software Developer</option>
+                    <option value="infrastructure">⚡ Cloud Infrastructure Engineer</option>
+                    <option value="security-ops">🔒 Cyber Security Operations Analyst</option>
+                    <option value="product-design">📐 Senior UX/UI Product Designer</option>
+                    <option value="data-architecture">📊 Data Architect & BI Specialist</option>
+                    <option value="tech-entrepreneur">🚀 Technology Entrepreneur</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>ทักษะความเชี่ยวชาญเฉพาะทาง (Technical Skills)</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="skills" value="Web"> Full-Stack Web Architecture
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="skills" value="Mobile"> Mobile Enterprise Solutions
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="skills" value="AI"> Artificial Intelligence & Deep Learning
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>ช่องทางการรับข้อมูลข่าวสารหลัก (Primary Channel)</label>
+                <div class="radio-group">
+                    <label class="radio-container">
+                        <input type="radio" name="contactMethod" value="Email" checked> Official Email
+                        <span class="radio-mark"></span>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="contactMethod" value="Phone"> Mobile SMS
+                        <span class="radio-mark"></span>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="contactMethod" value="Internal"> Internal Internal System
+                        <span class="radio-mark"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="contactDetails">ประวัติการทำงานโดยย่อ หรือข้อมูลการติดต่อเพิ่มเติม</label>
+                <textarea id="contactDetails" class="form-textarea" placeholder="ระบุประวัติการทำงาน หรือช่องทางการติดต่ออื่นๆ เพื่อให้ฝ่ายบุคคลพิจารณาเพิ่มเติม..."></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn-submit">เข้าสู่ระบบ / ลงทะเบียนบุคลากร</button>
+
+        </form>
+
+        <div class="portal-footer">
+            <p>© 2026 Sawang Daen Din Technical College. All Rights Reserved. Securing Connection.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
